@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Covid Cleaner - COVID-19-less Internet</title>
+  <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+	<link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div>
+    <h4>
+      As I'm sure many of you have been experiencing, every corner of the internet and our conversations is consumed by the news about COVID. In an effort to reduce the constant negativity, this App removes all instances of COVID related words on a page.
+    </h4>
+    <h4>
+      On google it purges COVID related searches. More features to come!
+    </h4>
+    <h4>
+      The tool also functions as a classic text replacer.
+    </h4>
+  </div>
+  <h3>
+    Additional Removal Terms
+  </h3>
+  <label for="search1">Search Term:</label>
+  <input type="text" id="search">
+  <label for="replace1">Replace Term:</label>
+  <input type="text" id="replace">
+
+  <div id="status"></div>
+  <button id="save">Save</button>
+  
+  <table>
+    <thead>
+      <td>Search Term</td>
+      <td>Replace Term</td>
+      <td>Remove</td>
+    </thead>
+    <tbody id="data">
+    </tbody>
+  </table>
+  <script src="options.js"></script>
+</body>
+</html>
