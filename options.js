@@ -45,6 +45,7 @@ function restore_options() {
       remove.innerHTML = "X";
       remove.addEventListener('click', () => {removeSearch(row.id)})
       //handle click of remove
+      row.innerHTML = '';
       row.appendChild(search);
       row.appendChild(replace);
       row.appendChild(remove);

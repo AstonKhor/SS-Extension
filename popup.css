@@ -28,6 +28,13 @@ body, html {
     font-weight: bold;
 }
 
+#countText {
+    position: absolute;
+    top: 55;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 ul.vmenu {
     -webkit-user-select: none;
     list-style-type: none;

@@ -1,15 +1,15 @@
 function main(items) {
 	var global = items.global || { };
-
+	console.log('glob', global)
 	$('#toggle_enable').click(function() {
 		this.innerText = this.innerText == 'DISABLED' ? 'ENABLED' : 'DISABLED';
 		if( this.innerText == 'ENABLED' ) {
 			$(this).css('color', '#00AA00');
-			chrome.browserAction.setIcon( { path: 'images/icon_19.png' } );
+			//change icon
 		}
 		else {
 			$(this).css('color', '#CC0000');
-			chrome.browserAction.setIcon( { path: 'images/icon_19_disabled.png' } );
+			// change icon
 		}
 	}).click().click(); // Initialize to DISABLED.
 	// But enable if it gotta be enabled (the timeout is because setIcon sometimes doesn't catch up fast enough and also fuck abusing async methods when unnecessary)
@@ -20,14 +20,19 @@ function main(items) {
 		chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT}, function(tabs) {
 			if( global.enabled ) {
 				// Run the content script on enable since we can still do what has not been done yet
-				chrome.tabs.sendMessage(tabs[0].id, "run_cs");
+				chrome.tabs.sendMessage(tabs[0].id, "run_cs", (item) => {
+					console.log('it worked', item);
+					updateCount();
+				});
+				console.log('here enabled');
 			}
 			else {
+				updateCount(true);
 				// Refresh on disable since we can't undo what was done
 				chrome.tabs.sendMessage(tabs[0].id, "refresh");
 			}
 
-			chrome.storage.local.set( { global: global } );
+			chrome.storage.sync.set( { global: global } );
 		});
 
 	});
@@ -43,7 +48,18 @@ function main(items) {
 	});
 }
 
+function updateCount(clear) {
+	chrome.storage.sync.get('count', (items) => {
+		let countEl = document.getElementById('count');
+		if (clear) {
+			countEl.innerHTML = 0;
+		} else {
+			countEl.innerHTML = items.count;
+		}
+		console.log('items', items);
+	})
+}
 
 $(document).ready(function() {
-	chrome.storage.local.get('global', main);
+	chrome.storage.sync.get('global', main);
 });

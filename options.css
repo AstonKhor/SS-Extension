@@ -2,32 +2,44 @@ input {
   display: block;
 }
 
+h3 {
+  margin-bottom: 0;
+}
+
 table {
+  margin: 1em 0;
   width: 100%;
-  border-collapse: collapse;
-  text-align: left;
   overflow: hidden;
+  background: #FFF;
+  color: #024457;
+  border-radius: 10px;
+  border: 1px solid #167F92;
 }
-table td, table th {
-  border-top: 1px solid #ECF0F1;
-  padding: 10px;
+table tr {
+  border: 1px solid #D9E4E6;
 }
-table td {
-  border-left: 1px solid #ECF0F1;
-  border-right: 1px solid #ECF0F1;
+table tr:nth-child(odd) {
+  background-color: #EAF3F3;
 }
 table th {
-  background-color: #4ECDC4;
+  display: none;
+  border: 1px solid #FFF;
+  background-color: #167F92;
+  color: #FFF;
+  padding: 1em;
 }
-table tr:nth-of-type(even) td {
-  background-color: #d9f4f2;
+table th:first-child {
+  display: table-cell;
+  text-align: center;
 }
-table .total th {
-  background-color: white;
+table th:nth-child(2) {
+  display: table-cell;
 }
-table .total td {
-  text-align: right;
-  font-weight: 700;
+table th:nth-child(2) span {
+  display: none;
+}
+table th:nth-child(2):after {
+  content: attr(data-th);
 }
 
 .form__group {
