@@ -36,12 +36,14 @@ function restore_options() {
     tableBody.innerHTML = '';
     for (let key in searches) {
       let row = document.createElement('tr');
+      row.id = `${key},${searches[key]}`
       let search = document.createElement('td');
       search.innerHTML = key;
       let replace = document.createElement('td');
       replace.innerHTML = searches[key];
       let remove = document.createElement('button');
       remove.innerHTML = "X";
+      remove.addEventListener('click', () => {removeSearch(row.id)})
       //handle click of remove
       row.appendChild(search);
       row.appendChild(replace);
@@ -50,6 +52,28 @@ function restore_options() {
     }
   });
 }
+
+function removeSearch(rowId) {
+  chrome.storage.sync.get({
+    searches: {},
+  }, function({ searches }) {
+    let tableBody = document.getElementById(rowId);
+    tableBody.remove();
+    let key = rowId.split(',')[0];
+    delete searches[key];
+    chrome.storage.sync.set({
+      searches: searches
+    }, function() {
+      var status = document.getElementById('status');
+        status.textContent = 'Options saved.';
+        restore_options();
+        setTimeout(function() {
+          status.textContent = '';
+        }, 1500);
+    })
+  });
+}
+
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click',
     save_options);

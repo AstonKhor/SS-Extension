@@ -16,24 +16,31 @@
     <h4>
       The tool also functions as a classic text replacer.
     </h4>
+    <h5>
+      Created By <a href="https://astonk.com">Aston Khor</a>
+    </h5>
   </div>
   <h3>
     Additional Removal Terms
   </h3>
-  <label for="search1">Search Term:</label>
-  <input type="text" id="search">
-  <label for="replace1">Replace Term:</label>
-  <input type="text" id="replace">
+  <div class="form__group field">
+    <input type="input" class="form__field" id="search" placeholder="Search Term">
+    <label for="search1" class="form__label">Search</label>
+  </div>
+  <div class="form__group field">
+    <input type="input" class="form__field" id="replace" placeholder="Replace Term">
+    <label for="replace1" class="form__label">Replace</label>
+  </div>
 
   <div id="status"></div>
-  <button id="save">Save</button>
+  <button class="buttonfx curtaindown" id="save">Save</button>
   
   <table>
-    <thead>
-      <td>Search Term</td>
-      <td>Replace Term</td>
-      <td>Remove</td>
-    </thead>
+    <th class="table-head">
+      <th>Search Term</th>
+      <th>Replace Term</th>
+      <th>Remove</th>
+    </th>
     <tbody id="data">
     </tbody>
   </table>

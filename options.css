@@ -3,18 +3,164 @@ input {
 }
 
 table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
   width: 100%;
-  margin-top: 10;
-}
-
-td, th {
-  border: 1px solid #dddddd;
+  border-collapse: collapse;
   text-align: left;
-  padding: 8px;
+  overflow: hidden;
+}
+table td, table th {
+  border-top: 1px solid #ECF0F1;
+  padding: 10px;
+}
+table td {
+  border-left: 1px solid #ECF0F1;
+  border-right: 1px solid #ECF0F1;
+}
+table th {
+  background-color: #4ECDC4;
+}
+table tr:nth-of-type(even) td {
+  background-color: #d9f4f2;
+}
+table .total th {
+  background-color: white;
+}
+table .total td {
+  text-align: right;
+  font-weight: 700;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
+.form__group {
+  display: inline-block;
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  margin-left: 15px;
+  width: 43%;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 1.3rem;
+  columns: #000000;;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+.form__field::placeholder {
+  color: transparent;
+}
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #9b9b9b;
+}
+
+.form__field:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #11998e, #38ef7d);
+  border-image-slice: 1;
+}
+.form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #11998e;
+  font-weight: 700;
+}
+
+
+
+/* button */
+.buttonfx{
+  color: black; /* button text color */
+  outline: none;
+  background: transparent;
+  border: none;
+  border-bottom: 4px solid #eee;
+  letter-spacing: 0.0625em;
+  padding: 8px 10px; 
+  text-transform: uppercase;
+  font: bold 16px 'Bitter', sans-serif; /* use google font */
+  line-height: 2;
+  position: relative;
+  margin: 13px 40%;
+  cursor: pointer;
+	text-decoration: none; /* remove underline if using A instead of BUTTON tag */
+  overflow: hidden;
+  transition: all .5s;
+}
+
+/* //// Default effect: Slide from Top  //// */
+
+.buttonfx:before,
+.buttonfx:after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  background: #259f6c; /* onhover background color */
+  z-index: -1;
+  transform: translate3D(0,-100%,0); /* move elements above button so they don't appear initially */
+  transition: all .5s;
+}
+
+.buttonfx:before{
+  background: #fafcd6; /* button default background color */
+  z-index: -2;
+  transform: translate3D(0,0,0);
+}
+
+.buttonfx:hover{
+	color: white;
+}
+
+.buttonfx:hover:after{
+  transform: translate3D(0,0,0);
+  transition: all .5s;
+}
+
+.curtaindown{
+  border: 1px solid #eee;
+  border-bottom: 4px solid #eee;
+}
+
+.curtaindown:before,
+.curtaindown:after{
+  background: #259f6c;
+  transform: translate3D(0,-100%,0);
+}
+
+.curtaindown:after{
+  transform: translate3D(0,100%,0);
+}
+
+.curtaindown:hover:before,
+.curtaindown:hover:after{
+  transform: translate3D(0,-50%,0);
+  transition: all .5s;
+}
+
+.curtaindown:hover:after{
+  transform: translate3D(0,50%,0);
 }
