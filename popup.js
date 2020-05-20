@@ -12,7 +12,7 @@ function main(items) {
 			// change icon
 		}
 	}).click().click(); // Initialize to DISABLED.
-	// But enable if it gotta be enabled (the timeout is because setIcon sometimes doesn't catch up fast enough and also fuck abusing async methods when unnecessary)
+	// But enable if it gotta be enabled (the timeout is because setIcon sometimes doesn't catch up fast enough and also try not to abuse asyn methods 
 	if(global.enabled) setTimeout( function() { $('#toggle_enable').click() }, 10 );
 	// And then bind the event that actually saves the enabled state to storage
 	$('#toggle_enable').click(function() {
