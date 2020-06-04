@@ -1,68 +1,188 @@
-body, html {
-    background-color: #f1f1f1;
-    color: #333;
+#app{
+    background-color: #fff;
     font-family: arial, sans-serif;
 
-    min-width: 320px;
-
+    min-width: 680px;
+    height: 560px;
     margin: 0;
+    margin-bottom: -60px;
     padding: 0;
 }
 
-#banner {
+#header {
     display: block;
     width: 100%;
-    height: 68px;
+    height: 60px;
     margin: auto;
-    background-color: rgb(219,243,243);
-    background-position: 0 11;
-    background-image: url('CC-Icon48.png');
+    color: white;
+    background-color: #262f6d;
+    background-position: 6 6;
+    background-image: url('SS-Icon48.jpeg');
     background-repeat: no-repeat;
 }
 
 #title {
     display: block;
     padding-left: 65;
-    padding-top: 23;
+    line-height: 60px;
     font-size: 22;
     font-weight: bold;
 }
 
-#countText {
-    position: absolute;
-    top: 55;
-    left: 50%;
-    transform: translate(-50%, -50%);
+#body {
+    display: flex;
+    flex-direction: row;
 }
 
-ul.vmenu {
-    -webkit-user-select: none;
-    list-style-type: none;
-    padding-left:0;
+#tabs {
+    display: flex;
+    flex-direction: column;
+    width: 140px;
+}
 
+button:focus {
+    outline: none;
+}
+
+.unselected_btn:hover {
+    background-color: #f7f7f7;
+}
+
+.tab_btn {
+    background-color: #fff;
+    font-weight: 500;
+    text-align: left;
+    padding-left: 65px;
+    margin-left: -65px;
+    border-radius: 18px;
+    border: none;
+    height: 35px;
+    width: 190px;
+}
+
+#upload_btn {
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149);
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 24px;
+    display: inline-flex;
+    letter-spacing: .15px;
+    line-height: 50px;
+    padding: 0 24px 0 0;
+    text-transform: none;
+    
+    font-weight: 700;
+    text-align: left;
+    padding-left: 20px;
+    margin-left: -30px;
+    margin-bottom: 15px;
+    height: 50px;
+    width: 120px;
+}
+
+#drive_btn {
+    font-weight: 700;
+    background-color: #e8f0fe;
+    color: #1967d2;
+}
+
+/* tab_data */
+
+#tab_data {
+    width: 500px;
+}
+
+.tab_body_title {
+    font-size: 22px;
+    padding-bottom: 10px;
+    /* width: 700px; */
+    border-bottom: 1px #b2b2b2 solid;
+}
+
+.tab_body_section {
+    margin-right: 30px;
+}
+
+.upload_body_title {
     font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-
-    margin: 0;
+    color: #919191;
+    margin-bottom: 15px;
+    margin-top: 15px;
 }
 
-ul.vmenu > li {
-    cursor: pointer;
-    display: block;
-    -webkit-box-sizing:border-box;
-
-    width: 100%;
-    height: 32px;
-    line-height: 32px;
-
-    background: #dedede;
-    border-top: 1px solid #f1f1f1;
-    border-bottom: 1px solid #ccc;
-
-    text-shadow: #fff 0px 1px 0px;
+.filelist_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* width: 700px; */
 }
 
-ul.vmenu > li:hover {
-    background: #e9e9e9;
+.file_card {
+    display: flex;
+    flex-direction: column;
+    border: 1px black solid;
+    border-radius: 7px;
+    width: 150px;
+    overflow: hidden;
+}
+
+.file_card_top {
+    height: 85px;
+    background-color: white;
+    z-index: 10;
+    margin-bottom: none;
+    border-bottom: 1px #b2b2b2 solid;
+}
+
+.file_card_bot {
+    background-color: white;
+    height: 45px;
+    z-index: 1;
+
+    margin-top: none;
+    padding-left: 12px;
+    padding-top: 12px;
+}
+
+.file_card:hover > .file_card_bot {
+    background-color: #e8f0fe;
+}
+
+.file_card_bot_title {
+    font-size: 13px;
+    font-weight: 550;
+}
+
+.file_card_bot_lastedit {
+    font-size: 11px;
+}
+
+.file_card_bot_img {
+    display: inline;
+}
+
+.folderlist_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.folderlist_item {
+    border: 1px #b2b2b2 solid;
+    border-radius: 7px;
+    line-height: 38px;
+    height: 38px;
+    width: 120px;
+    padding-left: 40px;
+    margin-right: 10px;
+    background-image: url('./icons/folder.png');
+    background-position: 7px center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+}
+
+.folderlist_item:hover {
+    background-color: #e8f0fe;
+    color: #1967d2;
 }

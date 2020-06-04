@@ -1,28 +1,73 @@
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="popup.js"></script>
 	<link rel="stylesheet" href="popup.css">
-	<title>Grab HTML Before it Loads</title>
+	<title>Silo Storage</title>
 </head>
 
-<body>
-<div id="banner">
-	<span id="bannerImg"></span>
-	<h3 id="title">CC Covid-less Internet</h3>
-	<div id="countText">
-		<span id="count">0</span>
-		<span> Instances Replaced</span>
+<body id="app">
+	<div id="header" role="header">
+		<h3 id="title">Silo Storage</h3>
 	</div>
-</div>
-<div>
-	<div>Intercepted HTML</div>
-	<textarea id="intercepted HTML"></textarea>
-</div>
-<ul class="vmenu">
-<li id="toggle_enable">DISABLED</li>
-<li id="open_options">SETTINGS</li>
-</ul>
+	<ul id="body">
+		<div id="tabs" role="navigation">
+			<button id="upload_btn">Upload</button>
+			<button class="tab_btn" id="drive_btn">My Drive</button>
+			<button class="tab_btn unselected_btn" id="shared_btn">Shared With Me</button>
+			<button class="tab_btn unselected_btn" id="trash_btn">Trash</button>
+			<button class="tab_btn unselected_btn" id="settings_btn">Settings</button>
+		</div>
+		<div id="tab_data" role="interface">
+			<div class="tab_body" id="upload_body" style="display:none"></div> <!-- Made invisible for scope of this project -->
+			<div class="tab_body" id="drive_body">
+				<div class="tab_body_title">My Drive</div>
+				<div class="tab_body_section">
+					<div class="upload_body_title">Recent</div>
+					<div class="filelist_container">
+						<div class="file_card">
+							<div class="file_card_top">
+							</div>
+							<div class=file_card_bot>
+								<img class="file_card_bot_img"> 
+								<div class="file_card_bot_title">Vision Board 2020</div>
+								<div class="file_card_bot_lastedit">Last editted 1 week ago</div>
+							</div>
+						</div>
+						<div class="file_card">List of Favorite Restaurants in SF</div>
+						<div class="file_card">Open by Andre Agassi ebook</div>
+					</div>
+				</div>
+				<div class="tab_body_section">
+					<div class="upload_body_title">Folders</div>
+					<div class="folderlist_container">
+						<div class="folderlist_item">Family</div>
+						<div class="folderlist_item">Climbing</div>
+						<div class="folderlist_item">My Photos</div>
+						<div class="folderlist_item">SWE</div>
+					</div>
+				</div>
+				<div class="tab_body_section">
+					<div class="upload_body_title">Files</div>
+					<div class="filelist_container">
+						<div class="file_card">Notes for Standup</div>
+						<div class="file_card">Reading List</div>
+						<div class="file_card">New Years Resolution</div>
+						<div class="file_card">Exercise Log</div>
+						<div class="file_card">Vision Board 2020</div>
+						<div class="file_card">That One Document</div>
+						<div class="file_card">List of Favorite Restaurants in SF</div>
+						<div class="file_card">Open by Andre Agassi ebook</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab_body" id="shared_body" style="display:none"></div>
+			<div class="tab_body" id="trash_body" style="display:none"></div>
+			<div class="tab_body" id="settings_body" style="display:none"></div>
+		</div>
+	</ul>
 </body>
+
 </html>
