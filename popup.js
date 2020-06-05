@@ -1,14 +1,14 @@
 window.addEventListener('DOMContentLoaded', (event) => {
-	console.log($('#file')[0]);
-	$('#upload_btn')[0].addEventListener('click', () => {
-		$('#file').click();
+	console.log(document.getElementById('upload_btn'));
+	document.getElementById('upload_btn').addEventListener('click', () => {
+		document.getElementById('file').click();
 	})
-	$('#file')[0].addEventListener('input', () => {
+	document.getElementById('file').addEventListener('input', () => {
 		var file = document.getElementById("file").files[0];
 		var reader = new FileReader();
 		reader.onload = function(e){
 			console.log(e.target);
-			let fileName = $('#file')[0].value.toString().split('\\');
+			let fileName = document.getElementById('file').value.toString().split('\\');
 			fileName = fileName[fileName.length - 1];
 			console.log(fileName);
 			// var base64Rejex = /^(?:[A-Z0-9+\/]{4})*(?:[A-Z0-9+\/]{2}==|[A-Z0-9+\/]{3}=|[A-Z0-9+\/]{4})$/i;
@@ -19,7 +19,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		reader.readAsText(file);
 	});
 
-	let files = $('.file_card');
+	let files = document.getElementsByClassName('file_card');
+	console.log(files);
 	for (let i = 0; i < files.length; i++) {
 		files[i].addEventListener('click',() => {
 			chrome.runtime.sendMessage({type: 'clicked', fileName: '1.png'});
