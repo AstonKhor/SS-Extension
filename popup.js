@@ -1,69 +1,72 @@
-function main(items) {
-	var global = items.global || { };
-	// console.log('global', global)
-	// $('#toggle_enable').click(function() {
-	// 	this.innerText = this.innerText == 'DISABLED' ? 'ENABLED' : 'DISABLED';
-	// 	if( this.innerText == 'ENABLED' ) {
-	// 		$(this).css('color', '#00AA00');
-	// 		//change icon
-	// 	}
-	// 	else {
-	// 		$(this).css('color', '#CC0000');
-	// 		// change icon
-	// 	}
-	// }).click(); // Initialize to ENABLED.
-	// But enable if it gotta be enabled (the timeout is because setIcon sometimes doesn't catch up fast enough and also try not to abuse asyn methods 
-	if(global.enabled) setTimeout( function() { $('#toggle_enable').click() }, 10 );
-	// And then bind the event that actually saves the enabled state to storage
-	$('#toggle_enable').click(function() {
-		this.innerText = this.innerText == 'DISABLED' ? 'ENABLED' : 'DISABLED';
-		if( this.innerText == 'ENABLED' ) {
-			$(this).css('color', '#00AA00');
-			//change icon
+window.addEventListener('DOMContentLoaded', (event) => {
+	console.log($('#file')[0]);
+	$('#upload_btn')[0].addEventListener('click', () => {
+		$('#file').click();
+	})
+	$('#file')[0].addEventListener('input', () => {
+		var file = document.getElementById("file").files[0];
+		var reader = new FileReader();
+		reader.onload = function(e){
+			console.log(e.target);
+			let fileName = $('#file')[0].value.toString().split('\\');
+			fileName = fileName[fileName.length - 1];
+			console.log(fileName);
+			// var base64Rejex = /^(?:[A-Z0-9+\/]{4})*(?:[A-Z0-9+\/]{2}==|[A-Z0-9+\/]{3}=|[A-Z0-9+\/]{4})$/i;
+			// var isBase64Valid = base64Rejex.test(e.target.result);
+			// console.log(isBase64Valid);
+			chrome.runtime.sendMessage({type: 'save', file: e.target.result, fileName: fileName})
 		}
-		else {
-			$(this).css('color', '#CC0000');
-			// change icon
-		}
-
-		global.enabled = this.innerText == 'ENABLED';
-		if( global.enabled ) {
-			// Run the content script on enable since we can still do what has not been done yet
-			chrome.runtime.sendMessage("intercept", (item) => {
-				console.log('it worked', item);
-			});
-			console.log('here enabled');
-		}
-		else {
-			// Refresh on disable since we can't undo what was done
-			console.log('disabled: attempting to refresh')
-			chrome.runtime.sendMessage("refresh", () => {
-				console.log('disable worked');
-			});
-		}
-
-		chrome.storage.sync.set( { global: global } );
-
-	}).click().click();
-
-	$('#open_options').click(function() {
-		if (chrome.runtime.openOptionsPage) {
-	    	// New way to open options pages, if supported (Chrome 42+).
-	    	chrome.runtime.openOptionsPage();
-		} else {
-			// Reasonable fallback.
-			window.open(chrome.runtime.getURL('options.html'));
-		}
+		reader.readAsText(file);
 	});
-}
 
-chrome.runtime.onMessage.addListener(function(request, sender, cb) {
-	console.log('inside updating intercepted');
-	if (request.type === 'updateIntercepted') {
-		$('#interceptedURL').val('hello world');
+	let files = $('.file_card');
+	for (let i = 0; i < files.length; i++) {
+		files[i].addEventListener('click',() => {
+			chrome.runtime.sendMessage({type: 'clicked', fileName: '1.png'});
+		})
 	}
-})
+	console.log(files);
 
-$(document).ready(function() {
-	chrome.storage.sync.get('global', main);
+	chrome.runtime.onMessage.addListener(function(request, sender, cb) {
+		if (request.type === 'file saved') {
+			//create new card
+
+			console.log('creating card')
+			let link = document.createElement('a');
+			link.className = 'file_card_link';
+			link.href = 'drive_files/' + request.fileName;
+			link.setAttribute('download', request.fileName);
+			let card = document.createElement('div');
+			card.className = 'file_card';
+			let top = document.createElement('div');
+			let img = document.createElement('img');
+			img.src = 'drive_files/' + request.fileName;
+			img.width = '150';
+			top.className = 'file_card_top';
+			let bot = document.createElement('div');
+			let botTitle = document.createElement('div');
+			botTitle.innerHTML = 'New File Name';
+			botTitle.className = 'file_card_bot_title'
+			let botLastEdit = document.createElement('div');
+			botLastEdit.className = 'file_card_bot_lastedit'
+			botLastEdit.innerHTML = 'Last editted 0 seconds ago';
+			bot.className = 'file_card_bot';
+			link.append(card);
+			top.append(img);
+			bot.append(botTitle);
+			bot.append(botLastEdit);
+			card.append(top);
+			card.append(bot);
+			document.getElementById('all_files_container').append(link);
+
+		}
+		if (request.type === 'download') {
+			//create download link
+			// let link = document.createElement('a');
+			// document.body.append(link);
+			// link.href = request.img;
+			// link.setAttribute('download', '1.png');
+			// link.click()
+		}
+	})
 });

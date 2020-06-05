@@ -10,8 +10,3 @@ console.log('BLOCKING');
 chrome.runtime.sendMessage({action: "block"}, function(response) {
   document.getElementById('interceptedHTML').value = response.farewell
 });
-// let main = function() {
-//   console.log(chrome.webRequest);
-//   chrome.webRequest.onBeforeRequest.addListener(cb, filter, opt_extraInfoSpec);
-// }
-// main();

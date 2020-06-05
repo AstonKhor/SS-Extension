@@ -131,6 +131,11 @@ button:focus {
     overflow: hidden;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
 .file_card_top {
     height: 85px;
     background-color: white;

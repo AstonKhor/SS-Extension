@@ -14,7 +14,10 @@
 	</div>
 	<ul id="body">
 		<div id="tabs" role="navigation">
-			<button id="upload_btn">Upload</button>
+			<div>
+				<button id="upload_btn">Upload</button>
+				<input id="file" type="file" style="display: none">
+			</div>
 			<button class="tab_btn" id="drive_btn">My Drive</button>
 			<button class="tab_btn unselected_btn" id="shared_btn">Shared With Me</button>
 			<button class="tab_btn unselected_btn" id="trash_btn">Trash</button>
@@ -27,33 +30,39 @@
 				<div class="tab_body_section">
 					<div class="upload_body_title">Recent</div>
 					<div class="filelist_container">
-						<div class="file_card">
-							<div class="file_card_top">
-								<img src="drive_files/2.png" width="150">
+						<a class="file_card_link" href="drive_files/2.png" download>
+							<div class="file_card">
+								<div class="file_card_top">
+									<img src="drive_files/2.png" width="150">
+								</div>
+								<div class=file_card_bot>
+									<div class="file_card_bot_title">Vision Board 2020</div>
+									<div class="file_card_bot_lastedit">Last editted 2 hours ago</div>
+								</div>
 							</div>
-							<div class=file_card_bot>
-								<div class="file_card_bot_title">Vision Board 2020</div>
-								<div class="file_card_bot_lastedit">Last editted 2 hours ago</div>
+						</a>
+						<a class="file_card_link" href="drive_files/4.png" download>
+							<div class="file_card">
+								<div class="file_card_top">
+									<img src="drive_files/4.png" width="150">
+								</div>
+								<div class=file_card_bot>
+									<div class="file_card_bot_title">List of Favorite Restaurants in SF</div>
+									<div class="file_card_bot_lastedit">Last editted 1 week ago</div>
+								</div>
 							</div>
-						</div>
-						<div class="file_card">
-							<div class="file_card_top">
-								<img src="drive_files/4.png" width="150">
+						</a>
+						<a class="file_card_link" href="drive_files/1.png" download>
+							<div class="file_card">
+								<div class="file_card_top">
+									<img src="drive_files/1.png" width="150">
+								</div>
+								<div class=file_card_bot>
+									<div class="file_card_bot_title">Open by Andre Agassi ebook</div>
+									<div class="file_card_bot_lastedit">Last editted 1 month ago</div>
+								</div>
 							</div>
-							<div class=file_card_bot>
-								<div class="file_card_bot_title">List of Favorite Restaurants in SF</div>
-								<div class="file_card_bot_lastedit">Last editted 1 week ago</div>
-							</div>
-						</div>
-						<div class="file_card">
-							<div class="file_card_top">
-								<img src="drive_files/1.png" width="150">
-							</div>
-							<div class=file_card_bot>
-								<div class="file_card_bot_title">Open by Andre Agassi ebook</div>
-								<div class="file_card_bot_lastedit">Last editted 1 month ago</div>
-							</div>
-						</div>
+						</a>
 					</div>
 				</div>
 				<div class="tab_body_section">
@@ -67,16 +76,7 @@
 				</div>
 				<div class="tab_body_section">
 					<div class="upload_body_title">Files</div>
-					<div class="filelist_container">
-						<div class="file_card">
-							<div class="file_card_top">
-								<img src="drive_files/3.png" width="150">
-							</div>
-							<div class=file_card_bot>
-								<div class="file_card_bot_title">Notes for Standup</div>
-								<div class="file_card_bot_lastedit">Last editted 1 month ago</div>
-							</div>
-						</div>
+					<div class="filelist_container" id="all_files_container">
 						<div class="file_card">
 							<div class="file_card_top">
 								<img src="drive_files/2.png" width="150">

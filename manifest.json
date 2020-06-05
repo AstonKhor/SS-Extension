@@ -1,23 +1,27 @@
 {
+   "background": {
+      "scripts": ["background.js"],
+      "persistent": true
+   },
    "browser_action": {
-      "default_icon": "SS-Icon16.jpeg",
+      "default_icon": "SS-Icon16.png",
       "default_popup": "popup.html",
       "default_title": "webRequest"
    },
    "description": "Example of my work - Aston Khor",
    "icons": {
-      "128": "SS-Icon128.jpeg",
-      "16": "SS-Icon16.jpeg",
-      "48": "SS-Icon48.jpeg"
+      "128": "SS-Icon128.png",
+      "48": "SS-Icon48.png",
+      "16": "SS-Icon16.png"
    },
-   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmAuhL71DpynVei1/EmsmIrUGcRnZbSnqMBaLsPbt6PrgAQeLu54ZKTRt3XJNvZh15sLMEJRG4vW/JLqmI4OQv/71HFDESuMBJgcHjX3ZSa7Rd/NBmW1X3MDLMRVpnMENK5oBRiSW/rm2FEys4IqYjED+5gI7tiEqHRfwBO0Z4J1XkuBGZ0X8gVJHksLKjiAFPyZkZ/FDND0yGXLjh3SCq1fhCUZG6mlbUdIwfTyQFs6wnKHkmH8adK97o/DA85AuDXrpDThpONVEo7nSINw2SzM6HOj1Nlqch1Tj8sJS5qJZd4ZjLm8T7DOMVHSKAG5nFLjxyCN0dgwXf98vPwoBRwIDAQAB",
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmWHly3aruC+atJBsjjqsnhjUA8dQK2R29ibSBJNrLueudT1rrbK5cIbqd4V7xSzqCW0H1eZCd2GH1TfYDj/Em8EjCsZM6sJCPspUN40DdtjMMDjGnO9V9KvURghXLRyDNgB9xN663bW1de0IzneOofO5j2hXwv7TRU2XDlhEyVydiInDA2frpDuuFWlrB/KBMbIaEQTEv6enhYChHSwBkTX6ddAnG+VhDnfJv8OhlxeUbtFH+GldRVNhQVwuqtYxtWN7b95QqQwYhvT26KaXoqwFBJsjSiFXowRQ7xQFhwHfxC6JixAxuhCt9jUOxysK+0vZJ0YmKBI12bsubeo2MwIDAQAB",
    "manifest_version": 2,
    "name": "Silo Storage",
    "options_ui": {
       "open_in_tab": false,
       "page": "options.html"
    },
-   "permissions": [ "storage", "activeTab", "webRequest" , "webRequestBlocking", "<all_urls>"],
+   "permissions": [ "storage", "activeTab", "webRequest" , "webRequestBlocking", "<all_urls>", "unlimitedStorage"],
    "update_url": "https://clients2.google.com/service/update2/crx",
    "version": "1.0"
 }
